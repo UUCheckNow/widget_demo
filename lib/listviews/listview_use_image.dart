@@ -38,26 +38,31 @@ class ListViews extends StatelessWidget {
     //   children: _getData(),
     // );
 
-    return ListView.builder(
-      // 方案二：从listData中动态获取
-      itemCount: listData.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Image.network(listData[index]["imageUrl"]),
-          title: Text(listData[index]["title"]),
-          subtitle: Text(listData[index]["author"]),
-          trailing: Image.network(
-              "https://c-ssl.duitang.com/uploads/item/202007/15/20200715131823_vdeMe.gif"),
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ListViewDetail(
-                          imageStr: listData[index]["imageUrl"],
-                        )));
-          },
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("listview使用"),
+      ),
+      body: ListView.builder(
+        // 方案二：从listData中动态获取
+        itemCount: listData.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.network(listData[index]["imageUrl"]),
+            title: Text(listData[index]["title"]),
+            subtitle: Text(listData[index]["author"]),
+            trailing: Image.network(
+                "https://c-ssl.duitang.com/uploads/item/202007/15/20200715131823_vdeMe.gif"),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ListViewDetail(
+                            imageStr: listData[index]["imageUrl"],
+                          )));
+            },
+          );
+        },
+      ),
     );
   }
 }

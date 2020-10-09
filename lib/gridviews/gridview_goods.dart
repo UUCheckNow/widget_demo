@@ -29,15 +29,20 @@ class GridViews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        padding: EdgeInsets.all(10),
-        itemCount: 100000,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          crossAxisCount: 3,
-          childAspectRatio: 0.8,
-        ),
-        itemBuilder: this._getListData);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("GridView使用"),
+      ),
+      body: GridView.builder(
+          padding: EdgeInsets.all(10),
+          itemCount: 100000,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            crossAxisCount: 3,
+            childAspectRatio: 0.8,
+          ),
+          itemBuilder: this._getListData),
+    );
   }
 }

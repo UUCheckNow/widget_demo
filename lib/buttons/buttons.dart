@@ -7,130 +7,141 @@ import 'package:widget_demo/buttons/reisedbutton.dart';
 import 'cupertinobutton.dart';
 import 'flatbutton.dart';
 import '../listviews/listview_use_page13.dart';
+import 'floatingactionbutton.dart';
 import 'outlinebutton.dart';
 
 class Buttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(10),
-          child: RaisedButton(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Button 基本用法"),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(10),
+            child: RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReisedButtons()));
+              },
+              child: Text("凸起按钮 RaisedButton"),
+              color: Colors.lime,
+            ),
+          ),
+          FlatButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ReisedButtons()));
+                  MaterialPageRoute(builder: (context) => Flatbutton()));
             },
-            child: Text("凸起按钮 RaisedButton"),
-            color: Colors.lime,
+            child: Text("扁平化按钮 FlatButton"),
+            color: Colors.orange,
           ),
-        ),
-        FlatButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Flatbutton()));
-          },
-          child: Text("扁平化按钮 FlatButton"),
-          color: Colors.orange,
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.all(20),
-                height: 40,
-                child: OutlineButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Outlinebutton()));
-                  },
-                  child: Text("线框按钮 OutlineButton"),
-                  color: Colors.black, // 无效
-                  textColor: Colors.amber,
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.all(20),
+                  height: 40,
+                  child: OutlineButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Outlinebutton()));
+                    },
+                    child: Text("线框按钮 OutlineButton"),
+                    color: Colors.black, // 无效
+                    textColor: Colors.amber,
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-        Container(
-          height: 40,
-          width: double.infinity,
-          margin: EdgeInsets.all(10),
-          child: CupertinoButton(
-            padding: EdgeInsets.all(0),
-            child: Text(
-              "ios风格按钮 CupertinoButton",
-              style: TextStyle(color: Colors.yellow),
-            ),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Cupertinobutton()));
-            },
-            color: Colors.pinkAccent,
-            borderRadius: BorderRadius.all(Radius.circular(22)),
+            ],
           ),
-        ),
-        MyStatefulWidget(),
-        ButtonBar(
-          mainAxisSize: MainAxisSize.min,
-          alignment: MainAxisAlignment.start,
-          children: [
-            RaisedButton(
+          Container(
+            height: 40,
+            width: double.infinity,
+            margin: EdgeInsets.all(10),
+            child: CupertinoButton(
+              padding: EdgeInsets.all(0),
+              child: Text(
+                "ios风格按钮 CupertinoButton",
+                style: TextStyle(color: Colors.yellow),
+              ),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ListViewUsePage13()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Cupertinobutton()));
               },
-              child: Text(
-                "listview优化",
-                style: TextStyle(color: Colors.orange),
+              color: Colors.pinkAccent,
+              borderRadius: BorderRadius.all(Radius.circular(22)),
+            ),
+          ),
+          MyStatefulWidget(),
+          ButtonBar(
+            mainAxisSize: MainAxisSize.min,
+            alignment: MainAxisAlignment.start,
+            children: [
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ListViewUsePage13()));
+                },
+                child: Text(
+                  "listview优化",
+                  style: TextStyle(color: Colors.orange),
+                ),
               ),
-            ),
-            OutlineButton(
-              onPressed: () {},
-              child: Text(
-                "标签2",
-                style: TextStyle(color: Colors.purpleAccent),
+              OutlineButton(
+                onPressed: () {},
+                child: Text(
+                  "标签2",
+                  style: TextStyle(color: Colors.purpleAccent),
+                ),
               ),
-            ),
-            MyCustomButton(
-              pressed: () {},
-              text: "自定义按钮",
-            ),
-            RaisedButton(
-              onPressed: () {},
-              color: Colors.lightBlueAccent,
-              child: Text(
-                "标签4",
-                style: TextStyle(color: Colors.white),
+              MyCustomButton(
+                pressed: () {},
+                text: "自定义按钮",
               ),
-            ),
-          ],
-        ),
-        PopupMenuButton(
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
-            const PopupMenuItem(
-              value: WhyFarther.harder,
-              child: Text('第一行哈哈哈'),
-            ),
-            const PopupMenuItem(
-              value: WhyFarther.smarter,
-              child: Text(
-                '第二行哈哈哈',
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FloatingactionButton()));
+                },
+                color: Colors.lightBlueAccent,
+                child: Text(
+                  "标签4",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-          ],
-          icon: Icon(Icons.pan_tool),
-          elevation: 10,
-          offset: Offset(-50.0, 50.0),
-          tooltip: "this is a PopupMenuButton", //为什么不显示了呢
-        ),
-      ],
+            ],
+          ),
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<WhyFarther>>[
+              const PopupMenuItem(
+                value: WhyFarther.harder,
+                child: Text('第一行哈哈哈'),
+              ),
+              const PopupMenuItem(
+                value: WhyFarther.smarter,
+                child: Text(
+                  '第二行哈哈哈',
+                ),
+              ),
+            ],
+            icon: Icon(Icons.pan_tool),
+            elevation: 10,
+            offset: Offset(-50.0, 50.0),
+            tooltip: "this is a PopupMenuButton", //为什么不显示了呢
+          ),
+        ],
+      ),
     );
   }
 }
