@@ -62,9 +62,9 @@ class MainPage extends StatelessWidget {
       body: ListView(
         children: [
           buildButton(context,
-              text: 'popupmenubutton', navigationName: '/basicAppBarSample'),
+              text: 'popupmenubutton使用', navigationName: '/basicAppBarSample'),
           buildButton(context,
-              text: '分组列表', navigationName: '/searchResultList'),
+              text: '分组列表（搜索结果UI展示）', navigationName: '/searchResultList'),
           buildButton(context, text: 'Buttons', navigationName: '/buttons'),
           buildButton(context,
               text: 'ReisedButton', navigationName: '/reisedButtons'),
