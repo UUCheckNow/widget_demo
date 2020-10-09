@@ -69,7 +69,7 @@ class MainPage extends StatelessWidget {
           buildButton(context,
               text: 'ReisedButton', navigationName: '/reisedButtons'),
           buildButton(context,
-              text: 'ListView使用', navigationName: '/listViews'),
+              text: 'ListViews使用', navigationName: '/listViews'),
           buildButton(context,
               text: 'GridViews使用', navigationName: '/gridViews'),
           buildButton(context,
