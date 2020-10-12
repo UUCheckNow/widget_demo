@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_demo/dart/provider_route.dart';
 import 'package:widget_demo/search/group_list.dart';
 import 'package:widget_demo/search/search_page.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/listViews': (BuildContext context) => ListViews(),
         '/gridViews': (BuildContext context) => GridViews(),
         '/listViewChange': (BuildContext context) => ListViewChange(),
+        '/providerRoute': (BuildContext context) => ProviderRoute(),
         '/searchPage': (BuildContext context) => SearchPage(
               hideLeft: true,
             ),
@@ -74,6 +76,7 @@ class MainPage extends StatelessWidget {
               text: 'GridViews使用', navigationName: '/gridViews'),
           buildButton(context,
               text: '可展开列表', navigationName: '/listViewChange'),
+          buildButton(context, text: '购物车', navigationName: '/providerRoute'),
         ],
       ),
     );
