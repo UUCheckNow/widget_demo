@@ -5,7 +5,7 @@ import 'package:widget_demo/dart/card_model.dart';
 import 'change_notifier_provider.dart';
 import 'goods_item.dart';
 
-/*跨组件状态共享（Provider）*/
+/*跨组件状态共享（Provider）实现*/
 class ProviderRoute extends StatefulWidget {
   @override
   _ProviderRouteState createState() => _ProviderRouteState();
