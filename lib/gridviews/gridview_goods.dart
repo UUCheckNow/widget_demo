@@ -8,7 +8,7 @@ class GridViews extends StatelessWidget {
       child: Column(
         children: [
           Image.network(
-            listData[1]["imageUrl"],
+            listData[index]["imageUrl"],
             fit: BoxFit.cover,
           ),
           SizedBox(
@@ -35,7 +35,7 @@ class GridViews extends StatelessWidget {
       ),
       body: GridView.builder(
           padding: EdgeInsets.all(10),
-          itemCount: 100000,
+          itemCount: 100,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,

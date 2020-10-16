@@ -32,6 +32,11 @@ class DioPage extends StatelessWidget {
               _ssssss();
             },
           ),
+          IconButton(
+            tooltip: "flutter_bugly 测试崩溃",
+            icon: Icon(Icons.access_alarm),
+            onPressed: () {},
+          ),
         ],
       ),
     );
