@@ -1,11 +1,14 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:umeng_analytics_plugin/umeng_analytics_plugin.dart';
 import 'package:widget_demo/app_analysis.dart';
 import 'package:widget_demo/router.dart';
 import 'package:widget_demo/software_application.dart';
+import '';
+// void main() => FlutterBugly.postCatchedException(
+//       () => runApp(MyApp()),
+//       debugUpload: true,
+//     );
 
 void main() {
 //   debugPaintSizeEnabled = true;
@@ -15,24 +18,25 @@ void main() {
     home: new MyApp(),
   ));
   SoftwareApplication.getInstance().onCreate(); // 接入 友盟统计
-
-  FlutterError.onError = (FlutterErrorDetails details) {
-    print("dsdfsdfafaef$details");
-  };
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: Routers.generateRoute,
       navigatorObservers: [AppAnalysis()],
       initialRoute: '/',
     );
   }
 }
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +57,10 @@ class MainPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          buildButton(context,
+              text: '登录按钮过渡动画', navigationName: RouteNames.ANIMATIONBUTTONPAGE),
+          buildButton(context,
+              text: '键盘自适应', navigationName: RouteNames.KEYBOARDPAGE),
           buildButton(context,
               text: 'Dio实例', navigationName: RouteNames.DIOPAGE),
           buildButton(context,

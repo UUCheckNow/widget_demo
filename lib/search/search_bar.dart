@@ -46,13 +46,13 @@ class _SearchBarState extends State<SearchBar> {
   /*重写类的initsStatus方法*/
   @override
   void initState() {
+    super.initState();
     // 这句作用是： 如果点击了语音按钮识别成了文字以后需要显示到输入框中，
     if (widget.defaultText != null) {
       setState(() {
         _controller.text = widget.defaultText;
       });
     }
-    super.initState();
   }
 
   @override

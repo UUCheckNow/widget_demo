@@ -6,18 +6,22 @@ import 'package:widget_demo/buttons/buttons.dart';
 import 'package:widget_demo/buttons/reisedbutton.dart';
 import 'package:widget_demo/dart/provider_route.dart';
 import 'package:widget_demo/gridviews/gridview_goods.dart';
+import 'package:widget_demo/keyboard_page/keyboard_page.dart';
 import 'package:widget_demo/listviews/listview_change.dart';
 import 'package:widget_demo/listviews/listview_use_image.dart';
 import 'package:widget_demo/search/group_list.dart';
 import 'package:widget_demo/search/search_page.dart';
 import 'package:widget_demo/theme/theme_test_route.dart';
 
+import 'animation/animation_button.dart';
 import 'buttons/popupmenubutton.dart';
 import 'dio/dio_page.dart';
 import 'main.dart';
 
 class RouteNames {
   static const String MAINPAGE = '/';
+  static const String ANIMATIONBUTTONPAGE = '/animationButtonPage';
+  static const String KEYBOARDPAGE = '/keyBoardPage';
   static const String DIOPAGE = '/dioPage';
   static const String FUTUREBUILDROUTE = '/futureBuilderRoute';
   static const String STREAMBUILDROUTE = '/streamBuilderRoute';
@@ -33,9 +37,19 @@ class RouteNames {
   static const String SEARCHPAGE = '/searchPage';
 }
 
-class Router {
+class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RouteNames.ANIMATIONBUTTONPAGE:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: RouteNames.ANIMATIONBUTTONPAGE),
+          builder: (context) => AnimationButtonPage(),
+        );
+      case RouteNames.KEYBOARDPAGE:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: RouteNames.KEYBOARDPAGE),
+          builder: (context) => KeyBoardPage(),
+        );
       case RouteNames.DIOPAGE:
         return MaterialPageRoute(
           settings: RouteSettings(name: RouteNames.DIOPAGE),

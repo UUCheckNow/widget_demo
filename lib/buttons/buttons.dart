@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:widget_demo/buttons/custom_button.dart';
+import 'package:widget_demo/animation/custom_button.dart';
 import 'package:widget_demo/buttons/reisedbutton.dart';
 
 import 'cupertinobutton.dart';
