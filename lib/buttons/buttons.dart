@@ -51,7 +51,8 @@ class Buttons extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Outlinebutton()));
+                              builder: (context) =>
+                                  CustomScrollViewTestRoute()));
                     },
                     child: Text("线框按钮 OutlineButton"),
                     color: Colors.black, // 无效

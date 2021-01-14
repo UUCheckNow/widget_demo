@@ -17,3 +17,18 @@ class CardModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class MyModel with ChangeNotifier {
+  /*私有变量*/
+  List<Item> _items = [];
+  List<Item> get items => _items;
+
+  set items(List<Item> value) {
+    _items = value;
+  }
+
+  upDataName(String value, int index) {
+    _items[index].name = value;
+    notifyListeners();
+  }
+}

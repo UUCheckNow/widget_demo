@@ -53,12 +53,14 @@ class ListViews extends StatelessWidget {
             trailing: Image.network(
                 "https://c-ssl.duitang.com/uploads/item/202007/15/20200715131823_vdeMe.gif"),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ListViewDetail(
-                            imageStr: listData[index]["imageUrl"],
-                          )));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => XBTestPage()));
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => ListViewDetail(
+              //               imageStr: listData[index]["imageUrl"],
+              //             )));
             },
           );
         },

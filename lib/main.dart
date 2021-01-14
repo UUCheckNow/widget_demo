@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:umeng_analytics_plugin/umeng_analytics_plugin.dart';
 import 'package:widget_demo/app_analysis.dart';
 import 'package:widget_demo/router.dart';
 import 'package:widget_demo/software_application.dart';
-import '';
 // void main() => FlutterBugly.postCatchedException(
 //       () => runApp(MyApp()),
 //       debugUpload: true,
@@ -49,14 +47,27 @@ class _MainPageState extends State<MainPage> {
               color: Colors.white,
             ),
             onPressed: () {
-              UmengAnalyticsPlugin.event('clickSearch');
-              Navigator.of(context).pushNamed("/searchPage");
+              _hello();
+              // UmengAnalyticsPlugin.event('clickSearch');
+              // Navigator.of(context).pushNamed("/searchPage");
             },
           )
         ],
       ),
       body: ListView(
         children: [
+          buildButton(context,
+              text: '第三方环状图', navigationName: RouteNames.CHARTTESTPAGE),
+          buildButton(context,
+              text: '绘制柱状图', navigationName: RouteNames.CHARTPAGE),
+          buildButton(context,
+              text: '绘制环状图', navigationName: RouteNames.DONUTCHARTPAGE),
+          buildButton(context,
+              text: 'banner', navigationName: RouteNames.BANNERPAGE),
+          buildButton(context,
+              text: '扫一扫', navigationName: RouteNames.QRCODEPAGE),
+          buildButton(context,
+              text: '通讯录', navigationName: RouteNames.XBTESTPAGE),
           buildButton(context,
               text: '登录按钮过渡动画', navigationName: RouteNames.ANIMATIONBUTTONPAGE),
           buildButton(context,
@@ -89,6 +100,35 @@ class _MainPageState extends State<MainPage> {
               text: '可展开列表', navigationName: RouteNames.LISTVIEWCHANGE),
         ],
       ),
+    );
+  }
+
+  _hello() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          children: <Widget>[
+            Container(
+              height: 25,
+              width: double.infinity,
+              color: Colors.black54,
+            ),
+            Container(
+              height: 200,
+              width: double.infinity,
+              child: Center(child: Text("showModalBottomSheet")),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

@@ -33,6 +33,15 @@ dependencies:
   dio: ^3.0.10
   dio_cookie_manager: ^1.0.0
   umeng_analytics_plugin: ^1.0.3
+  provider: ^4.3.2+2
+#  azlistview: ^1.0.1
+  # 汉字转拼音
+  lpinyin: ^1.0.9
+  path_provider: ^1.1.0
+  flutter_dong_scan: ^1.0.6
+#  qrscan: ^0.2.19
+  charts_flutter: ^0.9.0
+
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +73,8 @@ flutter:
    - images/type_channelgroup.png
    - images/type_channelgs.png
    - images/type_cruise.png
+   - images/ali_connors.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

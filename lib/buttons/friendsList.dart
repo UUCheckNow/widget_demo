@@ -1,15 +1,4 @@
 import 'package:flutter/material.dart';
-
-// class ListViewDetail extends StatelessWidget {
-//   String imageStr;
-//   ListViewDetail({this.imageStr});
-//
-//   // 列表项
-//   Widget _buildListItem(BuildContext context, int index) {
-//     return ListTile(title: Text('list tile index $index'));
-//   }
-
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui';
 
@@ -19,8 +8,6 @@ class XBTestPage extends StatefulWidget {
 }
 
 class _XBTestPageState extends State<XBTestPage> {
-  double headerHeight = 150.0;
-  ScrollPhysics hahahahahha = NeverScrollableScrollPhysics();
   HoverHeaderVM _hoverVM = HoverHeaderVM();
   ScrollController _controller = ScrollController();
   List<HoverOffsetInfo> _hoverOffsetInfoList = [];
@@ -30,6 +17,15 @@ class _XBTestPageState extends State<XBTestPage> {
 
   static Map<String, List<String>> _dataSource = {
     "2020": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2021": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2022": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2023": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2024": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2025": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2026": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2027": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2028": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "2029": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
   };
 
   @override
@@ -38,12 +34,9 @@ class _XBTestPageState extends State<XBTestPage> {
     _computeHoverOffsetInfo();
     _controller.addListener(() {
       double offset = _controller.offset;
-      bool show = offset >= headerHeight / 2;
+      bool show = offset >= 0;
       if (_hoverVM.show != show) {
         _hoverVM.show = show;
-        setState(() {
-          hahahahahha = AlwaysScrollableScrollPhysics();
-        });
       }
       bool upward = offset - _lastOffset > 0;
       _lastOffset = offset;
@@ -115,9 +108,6 @@ class _XBTestPageState extends State<XBTestPage> {
         return _hoverVM;
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("header 悬浮"),
-        ),
         body: Stack(
           children: <Widget>[
             CustomScrollView(
@@ -128,84 +118,19 @@ class _XBTestPageState extends State<XBTestPage> {
                 return SliverList(
                     delegate: SliverChildBuilderDelegate((ctx, cellIndex) {
                   if (cellIndex == 0) {
-                    return Column(
-                      children: [
-                        Container(
-                          height: 75,
-                          child: Text("data"),
-                        ),
-                        Container(
-                          color: Colors.yellow,
-                          height: 75,
-                          child: Text("data"),
-                        )
-                      ],
-                    );
-                  } else if (cellIndex == 2) {
-                    return Container(
-                      height: 100,
-                      child: Text("data"),
-                    );
+                    return Header(title);
                   } else {
                     int fixIndex = cellIndex - 1;
                     String data = dataList[fixIndex];
-                    return Container(
-                      height: 300,
-                      color: Colors.teal,
-                      child: ListView(
-                        physics: hahahahahha,
-                        children: [
-                          ListTile(
-                            title: Text("title"),
-                            subtitle: Text("subtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("title123"),
-                            subtitle: Text("subtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("title"),
-                            subtitle: Text("s21324ubtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("werr"),
-                            subtitle: Text("sfdserfsref2423424234234"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("title"),
-                            subtitle: Text("subtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("title123"),
-                            subtitle: Text("subtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("title"),
-                            subtitle: Text("s21324ubtitle"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          ),
-                          ListTile(
-                            title: Text("werr"),
-                            subtitle: Text("sfdserfsref2423424234234"),
-                            leading: Icon(Icons.account_circle_sharp),
-                          )
-                        ],
-                      ),
-                    );
+                    return Cell(data);
                   }
-                }, childCount: 3));
+                }, childCount: dataList.length + 1));
               }),
             ),
             Consumer(builder: (ctx, HoverHeaderVM hoverVM, child) {
               return Visibility(
                 visible: hoverVM.show,
-                child: Header("我是盖它上面的假header",
+                child: Header(hoverVM.title,
                     color: Colors.green, offset: -hoverVM.offset),
               );
             })
@@ -249,12 +174,12 @@ class _XBTestPageState extends State<XBTestPage> {
 }
 
 class Header extends StatelessWidget {
-  static final height = 150.0;
+  static final height = 50.0;
   final String title;
   final Color color;
   final double offset;
 
-  Header(this.title, {this.color, this.offset = 75.0});
+  Header(this.title, {this.color, this.offset = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +191,7 @@ class Header extends StatelessWidget {
           Positioned(
             top: offset,
             child: Container(
-              height: height / 2,
+              height: height,
               width: MediaQueryData.fromWindow(window).size.width,
               color: color ?? Colors.orange,
               alignment: Alignment.centerLeft,
@@ -294,28 +219,16 @@ class Cell extends StatelessWidget {
       height: height,
       alignment: Alignment.center,
       color: Colors.black26,
-      child: ListView(
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          ListTile(
-            title: Text("title"),
-            subtitle: Text("subtitle"),
-            leading: Icon(Icons.account_circle_sharp),
-          ),
-          ListTile(
-            title: Text("title123"),
-            subtitle: Text("subtitle"),
-            leading: Icon(Icons.account_circle_sharp),
-          ),
-          ListTile(
-            title: Text("title"),
-            subtitle: Text("s21324ubtitle"),
-            leading: Icon(Icons.account_circle_sharp),
-          ),
-          ListTile(
-            title: Text("werr"),
-            subtitle: Text("sfdserfsref2423424234234"),
-            leading: Icon(Icons.account_circle_sharp),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+              child: Container(
+            alignment: Alignment.center,
+            child: Text(title),
+          )),
+          Container(
+            height: 1,
+            color: Colors.white,
           )
         ],
       ),
@@ -345,7 +258,7 @@ class HoverOffsetInfo {
 
 class HoverHeaderVM extends ChangeNotifier {
   String _title = "2020";
-  bool _show = false;
+  bool _show = true;
   double _offset = 0;
 
   String get title => _title;
@@ -365,37 +278,3 @@ class HoverHeaderVM extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Demo'),
-//       ),
-//       body: CustomScrollView(
-//         slivers: <Widget>[
-//           // 如果不是Sliver家族的Widget，需要使用SliverToBoxAdapter做层包裹
-//           SliverToBoxAdapter(
-//             child: Container(
-//               height: 120,
-//               color: Colors.green,
-//               child: Text('HeaderView'),
-//             ),
-//           ),
-//           // 当列表项高度固定时，使用 SliverFixedExtendList 比 SliverList 具有更高的性能
-//           SliverFixedExtentList(
-//               delegate:
-//                   SliverChildBuilderDelegate(_buildListItem, childCount: 30),
-//               itemExtent: 48.0),
-//           SliverToBoxAdapter(
-//             child: Container(
-//               height: 120,
-//               color: Colors.green,
-//               child: Text('footerView'),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
